@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Performance System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('analyze') }}">Performance Analysis</a></li>
+			<li><a href="{{ url_for('leaderboard') }}">Leader Board</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Welcome to Employee Performance System</h1>
+        <p>This platform helps analyze employee performance based on customer satisfaction reports.</p>
+        <p>Login to upload your performance report and view your satisfaction score.</p>
+    </div>
+</body>
+</html>

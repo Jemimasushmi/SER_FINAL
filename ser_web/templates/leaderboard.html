@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('analyze') }}">Performance Analysis</a></li>
+			<li><a href="{{ url_for('leaderboard') }}"> Leader Board</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Leaderboard</h1>
+        
+        <!-- Top 3 Employees Section -->
+        <h2>Top 3 Employees</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Employee Name</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for employee in top_employees %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ employee['name'] }}</td>
+                        <td>{{ employee['satisfaction_count'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <!-- Worst 3 Employees Section -->
+        <h2>Worst 3 Employees</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Employee Name</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for employee in worst_employees %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ employee['name'] }}</td>
+                        <td>{{ employee['dissatisfaction_count'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

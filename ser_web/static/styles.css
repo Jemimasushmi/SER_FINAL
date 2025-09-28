@@ -1,0 +1,192 @@
+/* Basic styling for the navigation bar */
+nav {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    overflow: hidden;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 14px 20px;
+    display: block;
+    transition: background 0.3s, transform 0.3s;
+}
+
+nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+/* Main container styling */
+.container {
+    text-align: center;
+    padding: 50px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    background: linear-gradient(135deg, #f5f7fa 0%, #b8c6db 100%);
+    width: 60%;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    color: #555;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/* Form styling */
+form {
+    margin-top: 20px;
+    text-align: center;
+}
+
+form label {
+    font-size: 16px;
+    color: #333;
+}
+
+form input[type="text"],
+form input[type="file"] {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 80%;
+    transition: border-color 0.3s;
+}
+
+form input[type="text"]:focus,
+form input[type="file"]:focus {
+    border-color: #2575fc;
+}
+
+form button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #28a745;
+    background: linear-gradient(135deg, #28a745 0%, #85e6a4 100%);
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s, transform 0.3s;
+}
+
+form button:hover {
+    background: linear-gradient(135deg, #218838 0%, #6dd5ed 100%);
+    transform: scale(1.05);
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+table thead {
+    background-color: #333;
+    color: white;
+}
+
+table th,
+table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f3f3f3;
+}
+
+table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Highlight rows based on satisfaction count */
+.highlight {
+    background-color: #d4edda !important; /* Green background */
+}
+
+/* Styling for the chart container */
+.chart-container {
+    margin: 20px auto;
+    width: 80%;
+    max-width: 600px;
+    height: 400px;
+}
+
+/* Button styles */
+button {
+    background-color: #007bff;
+    background: linear-gradient(135deg, #007bff 0%, #6dd5ed 100%);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #0056b3 0%, #2a9fd6 100%);
+    transform: scale(1.05);
+}
+
+/* Styling for performance page */
+.performance-page {
+    text-align: center;
+    margin: 50px auto;
+}
+
+.performance-page h1 {
+    color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    form input[type="text"],
+    form input[type="file"] {
+        width: 100%;
+    }
+
+    .chart-container {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul li {
+        display: block;
+        margin: 0;
+        padding: 10px;
+        text-align: center;
+    }
+
+    nav ul li a {
+        padding: 10px 15px;
+    }
+}

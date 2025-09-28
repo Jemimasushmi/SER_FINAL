@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            text-align: center; /* Center text */
+        }
+
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0; /* Remove default margin */
+            display: flex; /* Use flexbox for horizontal layout */
+            justify-content: center; /* Center items */
+        }
+
+        nav ul li {
+            margin-right: 20px; /* Space between links */
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.2s; /* Transition effect */
+        }
+
+        nav a:hover {
+            color: #ffa; /* Change color on hover */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .flashes {
+            list-style: none;
+            padding: 10px;
+            background: #e8f0fe;
+            border: 1px solid #d1e3f8;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .satisfaction-message {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .emoji {
+            font-size: 100px; /* Larger size for visibility */
+            transition: transform 0.2s;
+        }
+
+        .emoji:hover {
+            transform: scale(1.1); /* Slightly enlarge on hover */
+        }
+
+        h3 {
+            margin-top: 10px;
+            font-family: 'Arial', sans-serif;
+            font-size: 1.5em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+<center>
+    <!-- Navigation Bar -->
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('analyze') }}">Performance Analysis</a></li>
+			<li><a href="{{ url_for('leaderboard') }}"> Leader Board</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Flash messages section -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flashes">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <h1>Welcome, Employee {{ employee['id'] }}</h1>
+
+        <!-- Display the detected emotion if it exists -->
+        {% if emotion %}
+            <h2>Detected Emotion: {{ emotion }}</h2>
+        {% endif %}
+
+        <form action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+            <label for="audio">Upload Audio File:</label>
+            <input type="file" name="audio" id="audio" accept=".wav" required />
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+
+    <div class="satisfaction-message">
+    {% if emotion == 'happy' %}
+        <div class="emoji">😊</div>  <!-- Smiley emoji for happy -->
+        <h3>CUSTOMER SATISFIED</h3>
+    {% elif emotion == 'neutral' %}
+        <div class="emoji">😐</div>  <!-- Neutral emoji -->
+        <h3>CUSTOMER NEUTRAL</h3>
+    {% elif emotion in ['sad', 'angry', 'fear'] %}
+        <div class="emoji">😞</div>  <!-- Sad emoji for dissatisfied -->
+        <h3>CUSTOMER DISSATISFIED</h3>
+    {% else %}
+        <div class="emoji">❓</div> <!-- Question mark for unrecognized emotions -->
+        <h3>Upload audio file to recognize emotion!</h3>
+    {% endif %}
+</div>
+
+
+</center>
+</body>
+</html>
